@@ -21,135 +21,23 @@ STEP 5: Remove outliers using IQR
 STEP 6: Use zscore of to remove outliers
 
 # Coding and Output
-```
-import pandas as pd  
-df=pd.read_csv("/content/SAMPLEIDS.csv")
-df
-```
-<img width="1076" height="876" alt="Screenshot 2025-09-05 221136" src="https://github.com/user-attachments/assets/82535a24-6f85-4afd-ac32-ec65c0fc8690" />
-
-```
-df.head()
-```
-<img width="1066" height="254" alt="Screenshot 2025-09-05 222015" src="https://github.com/user-attachments/assets/a020919d-b1fd-460c-9ee5-cea0db3a35ca" />
-
-```
-df.tail()
-```
-<img width="1090" height="247" alt="Screenshot 2025-09-05 222114" src="https://github.com/user-attachments/assets/ab25be12-a4f4-47bc-a022-daffd33c2c1b" />
-
-```
-df.info()
-```
-<img width="412" height="421" alt="Screenshot 2025-09-05 222304" src="https://github.com/user-attachments/assets/de9e3790-6a3a-484f-a0c7-a814914c72d7" />
-
-
-```
-df.describe()
-```
-<img width="983" height="360" alt="Screenshot 2025-09-05 222415 - Copy" src="https://github.com/user-attachments/assets/0e6362f2-71e2-4eaa-b373-0cd93ececdfc" />
-
-```
-df.isnull().sum()
-```
-<img width="874" height="571" alt="Screenshot 2025-09-05 222522" src="https://github.com/user-attachments/assets/3b7f4fad-fb59-4c9a-846c-0e62b32f6cae" />
-
-```
-df.isnull().any()
-```
-<img width="377" height="571" alt="Screenshot 2025-09-05 222613" src="https://github.com/user-attachments/assets/f7b3fdc9-0136-4b36-acad-a42deaf9d552" />
-
-```
-df.dropna()
-```
-<img width="1099" height="568" alt="Screenshot 2025-09-05 222701" src="https://github.com/user-attachments/assets/a2aff1e5-1bdf-4dd0-a3f2-0b5093ad1e46" />
-
-```
-df.fillna(0)
-```
-<img width="1160" height="872" alt="Screenshot 2025-09-05 222746" src="https://github.com/user-attachments/assets/3f465143-b1e4-4769-8eef-438f2a4c5ee2" />
-
-```
-df.fillna(method='ffill')
-```
-<img width="1700" height="823" alt="Screenshot 2025-09-05 223440" src="https://github.com/user-attachments/assets/1f42fdb9-4be6-4ff1-960d-72e9d1e1458b" />
-
-```
-df.fillna({'GENDER':'MALE','NAME':'SRI'})
-```
-
-<img width="1179" height="863" alt="Screenshot 2025-09-05 223712" src="https://github.com/user-attachments/assets/c9f50f55-f82b-467b-8ec0-9e8f3afd5673" />
-
-```
-ir=pd.read_csv("/content/iris.csv")
-ir
-```
-
-<img width="734" height="513" alt="Screenshot 2025-09-05 223913" src="https://github.com/user-attachments/assets/ef8e50b0-bdb1-404c-96ed-365605526cdf" />
-
-```
-ir.describe()
-```
-
-<img width="672" height="365" alt="Screenshot 2025-09-05 224004" src="https://github.com/user-attachments/assets/a0827249-2a21-4a09-a37c-2516135101e7" />
-
-
-```
-import seaborn as sns
-
-sns.boxplot(x='sepal_width',data=ir)
-
-```
-<img width="770" height="562" alt="Screenshot 2025-09-05 224057" src="https://github.com/user-attachments/assets/15d68e84-e698-4d0e-86b3-bc2f2810dde4" />
-
-```
-Q1=ir.sepal_width.quantile(0.25)
-Q3=ir.sepal_width.quantile(0.75)
-(IQR)=Q3-Q1
-print(IQR)
-```
-<img width="225" height="38" alt="Screenshot 2025-09-05 224300" src="https://github.com/user-attachments/assets/5eeb55ac-884c-4817-ba2a-49d1512d7f75" />
-
-```
-ran=ir[((ir.sepal_width<(Q1-1.5*IQR))|(ir.sepal_width>(Q3+1.5*IQR)))]
-ran['sepal_width']
-```
-
-<img width="540" height="253" alt="Screenshot 2025-09-05 224352" src="https://github.com/user-attachments/assets/00452a63-e59e-49d6-8137-2d53aeba6c46" />
-
-```
-ran=ir[~((ir.sepal_width<(Q1-1.5*IQR))|(ir.sepal_width>(Q3+1.5*IQR)))]
-ran['sepal_width']
-```
-
-<img width="342" height="566" alt="Screenshot 2025-09-05 224444" src="https://github.com/user-attachments/assets/aef4cc78-1f97-4bd7-af0c-fca43e424615" />
-
-```
-sns.boxplot(x='sepal_width',data=ran)
-```
-
-<img width="777" height="569" alt="Screenshot 2025-09-05 224538" src="https://github.com/user-attachments/assets/c0c3bd9b-293b-49fe-99dd-d54887acee45" />
-
-```
-import numpy as np
-import scipy.stats as stats
-```
-```
-z=np.abs(stats.zscore(ir['petal_length']))
-z
-```
-
-
-<img width="766" height="664" alt="Screenshot 2025-09-05 224710" src="https://github.com/user-attachments/assets/913d64f8-c95a-4b11-b3bb-98dcb935de0d" />
-
-```
-ir1=ir[z<3]
-ir1
-```
-
-
-<img width="748" height="517" alt="Screenshot 2025-09-05 224852" src="https://github.com/user-attachments/assets/cc5d4078-90ba-48b4-8c3e-05d7b2f40da7" />
-
+<img width="1134" height="871" alt="Screenshot (12)" src="https://github.com/user-attachments/assets/619250a2-ece2-4a13-9560-6d1e34b89e4e" />
+<img width="1133" height="342" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/95dd0671-7cd5-48e3-9a28-66792cdf0143" />
+here>><img width="1122" height="322" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/a780fbe3-971f-49d8-84a6-2ded89426283" />
+<img width="951" height="867" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/ec9cbd4e-6df1-4788-aad6-407214e34e9f" />
+<img width="1121" height="635" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/a99a8dc4-3f3d-4827-bf42-a30db6986cfa" />
+<img width="1342" height="675" alt="Screenshot (17)" src="https://github.com/user-attachments/assets/44ae4b17-5be8-4c6a-a532-d4c0ab4b38a7" />
+<img width="1267" height="665" alt="Screenshot (18)" src="https://github.com/user-attachments/assets/6c2da620-2e1e-4b77-9931-9441080e24cf" />
+<img width="1347" height="851" alt="Screenshot (19)" src="https://github.com/user-attachments/assets/b5b34898-ef83-468c-8bdf-778acc78d20d" />
+<img width="1394" height="848" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/e5dfe636-6331-4b48-94a3-1dbb5f913242" />
+<img width="1756" height="841" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/e4e83000-4b60-49a0-a9a2-5b5971e21354" />
+<img width="1237" height="847" alt="Screenshot (22)" src="https://github.com/user-attachments/assets/9077cb77-353b-4175-a324-3dd1075c5304" />
+<img width="766" height="618" alt="Screenshot (23)" src="https://github.com/user-attachments/assets/2a2d547a-ce0b-41d6-9a82-c811443c823e" />
+<img width="770" height="442" alt="Screenshot (24)" src="https://github.com/user-attachments/assets/c1e32c18-1cce-4e48-8b35-3289642ca9e4" />
+<img width="990" height="709" alt="Screenshot (25)" src="https://github.com/user-attachments/assets/2aeb736e-b475-4721-9c7d-544ebbcb4bb4" />
+<img width="1116" height="850" alt="Screenshot (26)" src="https://github.com/user-attachments/assets/7fd475ce-cad1-45a8-b000-1741f13221a8" />
+<img width="1015" height="654" alt="Screenshot (27)" src="https://github.com/user-attachments/assets/defc6f26-04d2-436f-a18a-9166ca1a03fb" />
+<img width="808" height="284" alt="Screenshot (28)" src="https://github.com/user-attachments/assets/9380859f-214d-4057-9796-0233074a8375" />
 
 # Result
-Thus the given data successfully performed data cleaning and saved the cleaned data to a file.
+          This is the result after the data cleaning
